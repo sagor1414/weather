@@ -250,15 +250,12 @@ class HomeScreen extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          "Next 7 Days"
+                                          "Next 5 Days"
                                               .text
                                               .size(18)
                                               .semiBold
                                               .color(theme.primaryColor)
                                               .make(),
-                                          TextButton(
-                                              onPressed: () {},
-                                              child: "View All".text.make())
                                         ],
                                       ),
                                       ListView.builder(
@@ -272,63 +269,73 @@ class HomeScreen extends StatelessWidget {
                                               DateTime.now().add(
                                                   Duration(days: index + 1)));
                                           return Card(
-                                            child: Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 8,
-                                                      vertical: 10),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                      child: day.text.semiBold
-                                                          .color(theme
-                                                              .primaryColor)
-                                                          .make()),
-                                                  Expanded(
-                                                    child: TextButton.icon(
-                                                      onPressed: null,
-                                                      icon: Image.asset(
-                                                        "assets/weather/${hourlyData.list![index + 8].weather![0].icon}.png",
-                                                        width: 30,
+                                            color: const Color(0xff83c8e4),
+                                            child: ClipOval(
+                                              clipBehavior: Clip.antiAlias,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color:
+                                                      const Color(0xff83c8e4),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8,
+                                                        vertical: 10),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Expanded(
+                                                        child: day.text.semiBold
+                                                            .color(theme
+                                                                .primaryColor)
+                                                            .make()),
+                                                    Expanded(
+                                                      child: TextButton.icon(
+                                                        onPressed: null,
+                                                        icon: Image.asset(
+                                                          "assets/weather/${hourlyData.list![index + 8].weather![0].icon}.png",
+                                                          width: 30,
+                                                        ),
+                                                        label:
+                                                            "${hourlyData.list![index + 8].main!.temp}$degree"
+                                                                .text
+                                                                .color(theme
+                                                                    .primaryColor)
+                                                                .make(),
                                                       ),
-                                                      label:
-                                                          "${hourlyData.list![index + 8].main!.temp}$degree"
-                                                              .text
-                                                              .color(theme
-                                                                  .primaryColor)
-                                                              .make(),
                                                     ),
-                                                  ),
-                                                  RichText(
-                                                    text: TextSpan(
-                                                      children: [
-                                                        TextSpan(
-                                                          text:
-                                                              "${hourlyData.list![index + 8].main!.temp}$degree /",
-                                                          style: TextStyle(
-                                                              color: theme
-                                                                  .primaryColor,
-                                                              fontFamily:
-                                                                  "poppins",
-                                                              fontSize: 16),
-                                                        ),
-                                                        TextSpan(
-                                                          text:
-                                                              " ${hourlyData.list![index + 6].main!.temp}$degree",
-                                                          style: TextStyle(
-                                                              color: theme
-                                                                  .primaryColor,
-                                                              fontFamily:
-                                                                  "poppins",
-                                                              fontSize: 16),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  )
-                                                ],
+                                                    RichText(
+                                                      text: TextSpan(
+                                                        children: [
+                                                          TextSpan(
+                                                            text:
+                                                                "${hourlyData.list![index + 8].main!.temp}$degree /",
+                                                            style: TextStyle(
+                                                                color: theme
+                                                                    .primaryColor,
+                                                                fontFamily:
+                                                                    "poppins",
+                                                                fontSize: 16),
+                                                          ),
+                                                          TextSpan(
+                                                            text:
+                                                                " ${hourlyData.list![index + 6].main!.temp}$degree",
+                                                            style: TextStyle(
+                                                                color: theme
+                                                                    .primaryColor,
+                                                                fontFamily:
+                                                                    "poppins",
+                                                                fontSize: 16),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           );
